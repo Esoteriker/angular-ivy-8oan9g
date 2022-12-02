@@ -65,7 +65,7 @@ export class AppComponent {
     }
   }
 
-  /* exited(event: any) {
+  exited(event: any) {
     console.log('before');
     const currentIdx = event.container.data.findIndex(
       (f) => f.id === event.item.data.id
@@ -78,7 +78,7 @@ export class AppComponent {
     });
     console.log(this.menu);
     console.log('after');
-  } */
+  }
   entered() {
     this.menu = this.menu.filter((f) => !f.temp);
   }
