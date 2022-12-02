@@ -1,0 +1,44 @@
+<hello name="{{ name }}"></hello>
+<p>Start editing to see some magic happen :)</p>
+
+<div class="drap-copy">
+  <div>
+    <ul
+      class="menu"
+      cdkDropList
+      #menuList="cdkDropList"
+      [cdkDropListData]="menu"
+      cdkDropListSortingDisabled
+      [cdkDropListConnectedTo]="[tableList]"
+      (cdkDropListDropped)="drop($event)"
+      (cdkDropListExited)="exited($event)"
+      (cdkDropListEntered)="entered()"
+    >
+      <li class="item" *ngFor="let item of menu" cdkDrag [cdkDragData]="item">
+        <a>{{ item.title }}</a>
+      </li>
+    </ul>
+  </div>
+
+  <div
+    class="table"
+    cdkDropList
+    #tableList="cdkDropList"
+    [cdkDropListData]="table"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <div class="content">
+      <div>
+        <div class="item" *ngFor="let item of table; let idx = index" cdkDrag>
+          <p>{{ idx }}--{{ item.title }}</p>
+          <div class="desc">
+            <span>menuID：{{ item.id }}</span>
+            <span
+              >price：{{ item.price | currency: 'CNY':'symbol':'4.2-2' }}</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
